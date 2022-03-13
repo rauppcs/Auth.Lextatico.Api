@@ -19,7 +19,7 @@ namespace Auth.Lextatico.Api.Configurations
             services.AddControllers(options =>
             {
                 // FILTERS
-                options.Filters.Add<GlobalExceptionAttribute>();
+                // options.Filters.Add<GlobalExceptionAttribute>();
                 options.Filters.Add<ValidationModelAttribute>();
 
                 // CONVENCTIONS
