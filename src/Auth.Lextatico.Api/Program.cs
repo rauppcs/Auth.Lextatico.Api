@@ -45,9 +45,11 @@ app.UseSwagger();
 
 app.UseSwaggerUI(c => c.SwaggerEndpoint("doc/swagger.json", "Auth Lextatico Api v1"));
 
+app.UseDeveloperExceptionPage();
+
 if (!app.Environment.IsProduction())
 {
-    app.UseDeveloperExceptionPage();
+    // app.UseDeveloperExceptionPage();
 }
 
 if (app.Environment.IsProduction())
