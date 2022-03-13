@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="6.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.3.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="10.4.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="6.0.2" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI" Version="6.0.4" />
+    <PackageReference Include="AspnetCore.HealthChecks.UI.Client" Version="6.0.4" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="6.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Auth.Lextatico.Domain\Auth.Lextatico.Domain.csproj" />
+    <ProjectReference Include="..\Auth.Lextatico.Infra.Data\Auth.Lextatico.Infra.Data.csproj" />
+    <ProjectReference Include="..\Auth.Lextatico.Application\Auth.Lextatico.Application.csproj" />
+    <ProjectReference Include="..\Auth.Lextatico.Infra.Identity\Auth.Lextatico.Infra.Identity.csproj" />
+    <ProjectReference Include="..\Auth.Lextatico.Infra.Services\Auth.Lextatico.Infra.Services.csproj" />
+  </ItemGroup>
+
+</Project>

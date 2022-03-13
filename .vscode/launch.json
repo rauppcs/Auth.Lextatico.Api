@@ -1,0 +1,35 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Auth.Lextatico.Api - LocalDevelopment",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/src/Auth.Lextatico.Api/bin/Debug/net6.0/Auth.Lextatico.Api.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/Auth.Lextatico.Api",
+            "stopAtEntry": false,
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "LocalDevelopment"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        },
+        {
+            "name": "Docker .NET Core Launch",
+            "type": "docker",
+            "request": "launch",
+            "preLaunchTask": "docker-run: debug",
+            "netCore": {
+                "appProject": "${workspaceFolder}/src/Auth.Lextatico.Api/Auth.Lextatico.Api.csproj"
+            }
+        }
+    ]
+}

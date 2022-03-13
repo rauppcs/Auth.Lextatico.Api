@@ -1,0 +1,69 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{48EDCCC5-12D5-4703-9278-3180C68B1709}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Lextatico.Api", "src\Auth.Lextatico.Api\Auth.Lextatico.Api.csproj", "{528BD2C7-F935-473E-B11C-26CE2A40BC5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Lextatico.Application", "src\Auth.Lextatico.Application\Auth.Lextatico.Application.csproj", "{A9489FAC-050D-4A94-AD2C-98B52DD54BFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Lextatico.Domain", "src\Auth.Lextatico.Domain\Auth.Lextatico.Domain.csproj", "{1690963F-0AA0-477F-812E-074EC0A15C7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Lextatico.Infra.CrossCutting", "src\Auth.Lextatico.Infra.CrossCutting\Auth.Lextatico.Infra.CrossCutting.csproj", "{A752CB04-712E-44B1-8853-450191407102}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Lextatico.Infra.Data", "src\Auth.Lextatico.Infra.Data\Auth.Lextatico.Infra.Data.csproj", "{CE3DFA6A-322B-49E9-96E3-453A47F058FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Lextatico.Infra.Identity", "src\Auth.Lextatico.Infra.Identity\Auth.Lextatico.Infra.Identity.csproj", "{A38AD9F1-1852-4360-943E-CBC2EE2A8878}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Lextatico.Infra.Services", "src\Auth.Lextatico.Infra.Services\Auth.Lextatico.Infra.Services.csproj", "{3A6AB89D-9190-40CC-A5D6-16B9431B6F58}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{528BD2C7-F935-473E-B11C-26CE2A40BC5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{528BD2C7-F935-473E-B11C-26CE2A40BC5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{528BD2C7-F935-473E-B11C-26CE2A40BC5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{528BD2C7-F935-473E-B11C-26CE2A40BC5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9489FAC-050D-4A94-AD2C-98B52DD54BFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9489FAC-050D-4A94-AD2C-98B52DD54BFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9489FAC-050D-4A94-AD2C-98B52DD54BFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9489FAC-050D-4A94-AD2C-98B52DD54BFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1690963F-0AA0-477F-812E-074EC0A15C7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1690963F-0AA0-477F-812E-074EC0A15C7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1690963F-0AA0-477F-812E-074EC0A15C7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1690963F-0AA0-477F-812E-074EC0A15C7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A752CB04-712E-44B1-8853-450191407102}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A752CB04-712E-44B1-8853-450191407102}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A752CB04-712E-44B1-8853-450191407102}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A752CB04-712E-44B1-8853-450191407102}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE3DFA6A-322B-49E9-96E3-453A47F058FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE3DFA6A-322B-49E9-96E3-453A47F058FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE3DFA6A-322B-49E9-96E3-453A47F058FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE3DFA6A-322B-49E9-96E3-453A47F058FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A38AD9F1-1852-4360-943E-CBC2EE2A8878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A38AD9F1-1852-4360-943E-CBC2EE2A8878}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A38AD9F1-1852-4360-943E-CBC2EE2A8878}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A38AD9F1-1852-4360-943E-CBC2EE2A8878}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A6AB89D-9190-40CC-A5D6-16B9431B6F58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A6AB89D-9190-40CC-A5D6-16B9431B6F58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A6AB89D-9190-40CC-A5D6-16B9431B6F58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A6AB89D-9190-40CC-A5D6-16B9431B6F58}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{528BD2C7-F935-473E-B11C-26CE2A40BC5E} = {48EDCCC5-12D5-4703-9278-3180C68B1709}
+		{A9489FAC-050D-4A94-AD2C-98B52DD54BFD} = {48EDCCC5-12D5-4703-9278-3180C68B1709}
+		{1690963F-0AA0-477F-812E-074EC0A15C7E} = {48EDCCC5-12D5-4703-9278-3180C68B1709}
+		{A752CB04-712E-44B1-8853-450191407102} = {48EDCCC5-12D5-4703-9278-3180C68B1709}
+		{CE3DFA6A-322B-49E9-96E3-453A47F058FF} = {48EDCCC5-12D5-4703-9278-3180C68B1709}
+		{A38AD9F1-1852-4360-943E-CBC2EE2A8878} = {48EDCCC5-12D5-4703-9278-3180C68B1709}
+		{3A6AB89D-9190-40CC-A5D6-16B9431B6F58} = {48EDCCC5-12D5-4703-9278-3180C68B1709}
+	EndGlobalSection
+EndGlobal
