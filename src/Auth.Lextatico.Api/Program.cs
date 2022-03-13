@@ -94,8 +94,6 @@ app.MapHealthChecks("/healthchecks-data-ui", new HealthCheckOptions()
     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
 });
 
-app.MapHealthChecksUI();
-
 app.MapControllers();
 
 app.Run();

@@ -18,9 +18,6 @@ namespace Auth.Lextatico.Infra.CrossCutting.IoC
             services.AddHealthChecks()
                 .AddSqlServer(connectionString, name: "SqlServer");
 
-            services.AddHealthChecksUI()
-                .AddInMemoryStorage();
-
             return services;
         }
     }
