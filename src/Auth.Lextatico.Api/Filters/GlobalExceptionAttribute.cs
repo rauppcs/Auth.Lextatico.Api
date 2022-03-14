@@ -31,7 +31,9 @@ namespace Auth.Lextatico.Api.Filters
                 return;
             }
 
-            response.AddError("Ocorreu um erro inesperado.");
+            response.AddError(exception.Message);
+
+            // response.AddError("Ocorreu um erro inesperado.");
 
             var result = new ObjectResult(response);
 
