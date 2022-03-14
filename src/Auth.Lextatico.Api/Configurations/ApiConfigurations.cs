@@ -91,7 +91,7 @@ namespace Auth.Lextatico.Api.Configurations
             return services;
         }
 
-        public static IServiceCollection AddLextaticoJwtConfiguration(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddLextaticoJwt(this IServiceCollection services, IConfiguration configuration)
         {
             var signingConfigurations = new SigningConfiguration(configuration["SecretKeyJwt"]);
             services.AddSingleton(signingConfigurations);

@@ -33,7 +33,7 @@ builder.Services
     .AddLextaticoHealthChecks(builder.Configuration)
     .AddLextaticoContext(builder.Configuration)
     .AddLextaticoIdentity()
-    .AddLextaticoJwtConfiguration(builder.Configuration)
+    .AddLextaticoJwt(builder.Configuration)
     .AddLexitaticoCors()
     .AddLextaticoControllers()
     .AddLextaticoSwagger()
