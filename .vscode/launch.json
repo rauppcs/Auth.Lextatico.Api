@@ -10,6 +10,10 @@
             "args": [],
             "cwd": "${workspaceFolder}/src/Auth.Lextatico.Api",
             "stopAtEntry": false,
+            // "serverReadyAction": {
+            //     "action": "openExternally",
+            //     "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            // },
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "LocalDevelopment"
             },
