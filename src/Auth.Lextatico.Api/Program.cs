@@ -25,7 +25,7 @@ builder.Services
     .AddHttpContextAccessor()
     .AddLextaticoMessage()
     .AddLextaticoAspNetUser()
-    // .AddLextaticoEmailSettings(builder.Configuration)
+    .AddLextaticoEmailSettings(builder.Configuration)
     .AddLextaticoInfraServices()
     .AddLextaticoDomainServices()
     .AddLextaticoAutoMapper()
