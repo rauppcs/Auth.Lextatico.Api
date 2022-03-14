@@ -1,3 +1,4 @@
+using Auth.Lextatico.Infra.CrossCutting.CustomChecks;
 using Auth.Lextatico.Infra.Data.Context;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
@@ -16,6 +17,7 @@ namespace Auth.Lextatico.Infra.CrossCutting.IoC
             var connectionString = sqlStringBuilder.ToString();
 
             services.AddHealthChecks()
+                .AddCheck<SelfCheck>("API")
                 .AddSqlServer(connectionString, name: "SqlServer");
 
             return services;
