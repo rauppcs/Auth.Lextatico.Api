@@ -41,10 +41,9 @@ namespace Auth.Lextatico.Api.Controllers.Base
             else
                 response = new Response(data);
 
-            foreach (var error in _message.Errors)
-            {
-                response.AddError(error);
-            }
+            response.AddErrors(_message.Errors);
+
+            response.AddWarnings(_message.Warnings);
 
             return response;
         }

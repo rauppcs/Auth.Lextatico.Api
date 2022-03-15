@@ -2,14 +2,23 @@ namespace Auth.Lextatico.Domain.Dtos.Message
 {
     public class Message : IMessage
     {
-        public IList<Error> Errors { get; set; } = new List<Error>();
+        public IList<Notification> Errors { get; set; } = new List<Notification>();
+
+        public IList<Notification> Warnings { get; set; } = new List<Notification>();
+
         private string _locationObjectCreated = string.Empty;
 
-        public void AddError(Error error) => Errors.Add(error);
+        public void AddError(Notification error) => Errors.Add(error);
 
-        public void AddError(string property, string message) => Errors.Add(new Error(property, message));
+        public void AddError(string property, string message) => Errors.Add(new Notification(property, message));
 
-        public void AddError(string message) => Errors.Add(new Error(string.Empty, message));
+        public void AddError(string message) => Errors.Add(new Notification(string.Empty, message));
+
+        public void AddWarning(Notification error) => Warnings.Add(error);
+
+        public void AddWarning(string message) => Warnings.Add(new Notification(string.Empty, message));
+
+        public void AddWarning(string property, string message) => Warnings.Add(new Notification(property, message));
 
         public bool IsValid() => !Errors.Any();
 
@@ -22,10 +31,14 @@ namespace Auth.Lextatico.Domain.Dtos.Message
 
     public interface IMessage
     {
-        IList<Error> Errors { get; set; }
-        void AddError(Error error);
+        IList<Notification> Errors { get; set; }
+        void AddError(Notification error);
         void AddError(string property, string message);
         void AddError(string message);
+        IList<Notification> Warnings { get; set; }
+        void AddWarning(Notification warning);
+        void AddWarning(string property, string message);
+        void AddWarning(string message);
         bool IsValid();
         void ClearErrors();
         string GetLocation();

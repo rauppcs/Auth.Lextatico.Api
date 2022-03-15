@@ -1,8 +1,8 @@
 namespace Auth.Lextatico.Domain.Dtos.Message
 {
-    public class Error
+    public class Notification
     {
-        public Error(string property, string message)
+        public Notification(string property, string message)
         {
             Property = property;
             Message = message;
