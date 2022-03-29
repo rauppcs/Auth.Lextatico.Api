@@ -40,8 +40,10 @@ namespace Auth.Lextatico.Domain.Services
 
                 if (result.IsLockedOut)
                 {
-                    var endDate = user.LockoutEnd?.ToLocalTime()
-                        ?? DateTime.Now.Add(_signInManager.Options.Lockout.DefaultLockoutTimeSpan);
+                    var lockoutEnd = user.LockoutEnd?.UtcDateTime
+                        ?? DateTime.UtcNow + _signInManager.Options.Lockout.DefaultLockoutTimeSpan;
+
+                    var endDate = TimeZoneInfo.ConvertTimeFromUtc(lockoutEnd, TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time"));
 
                     _message.AddError(string.Empty, $"Usuário bloqueado até: {endDate:HH:mm}. Aguarde e tente novamente.");
                 }
