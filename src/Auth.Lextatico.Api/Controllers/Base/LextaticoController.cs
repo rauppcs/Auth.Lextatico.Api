@@ -48,10 +48,19 @@ namespace Auth.Lextatico.Api.Controllers.Base
             return response;
         }
 
+        private Response MountResponse()
+        {
+            return MountResponse(new { }, null, 0);
+        }
+
         protected virtual IActionResult ReturnOk()
         {
             if (!ValidResponse())
-                return BadRequest();
+            {
+                var response = MountResponse();
+
+                return ReturnBadRequest(response);
+            }
 
             return NoContent();
         }
