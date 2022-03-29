@@ -36,12 +36,27 @@ namespace Auth.Lextatico.Domain.Services
 
             if (!result.Succeeded)
             {
+                var user = await _userManager.FindByEmailAsync(email);
+
                 if (result.IsLockedOut)
-                    _message.AddError(string.Empty, "Usuário bloqueado. Aguarde 5 minutos e tente novamente.");
+                {
+                    var endDate = user.LockoutEnd?.ToLocalTime()
+                        ?? DateTime.Now.Add(_signInManager.Options.Lockout.DefaultLockoutTimeSpan);
+
+                    _message.AddError(string.Empty, $"Usuário bloqueado até: {endDate:HH:mm}. Aguarde e tente novamente.");
+                }
                 else if (result.IsNotAllowed)
                     _message.AddError(string.Empty, "Usuário não está liberado para fazer login.");
                 else
+                {
+                    var remainingAttempts =
+                        _signInManager.Options.Lockout.MaxFailedAccessAttempts - user.AccessFailedCount;
+
+                    if (user != null)
+                        _message.AddWarning($"Tentativas restantes antes do bloqueio: {remainingAttempts}");
+
                     _message.AddError(string.Empty, "Usuário ou senha incorreto.");
+                }
             }
 
             return result.Succeeded;

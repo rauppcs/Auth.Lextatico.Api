@@ -1,15 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Auth.Lextatico.Api.Controllers.Base;
 using Auth.Lextatico.Application.Dtos.User;
 using Auth.Lextatico.Application.Services.Interfaces;
 using Auth.Lextatico.Domain.Dtos.Message;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace Auth.Lextatico.Api.Controllers
 {
