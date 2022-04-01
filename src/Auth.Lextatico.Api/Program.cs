@@ -1,4 +1,5 @@
 using System.Net.Mime;
+using Auth.Lextatico.Infra.CrossCutting.Extensions.MassTransitExtensions;
 using Auth.Lextatico.Api.Configurations;
 using Auth.Lextatico.Api.Extensions;
 using Auth.Lextatico.Infra.CrossCutting.Extensions;
@@ -38,6 +39,7 @@ builder.Services
     .AddLexitaticoCors()
     .AddLextaticoControllers()
     .AddLextaticoSwagger()
+    .AddLextaticoMassTransitWithRabbitMq(builder.Configuration)
     .AddEndpointsApiExplorer();
 
 var app = builder.Build();
@@ -48,6 +50,8 @@ app.UseSwaggerUI(c => c.SwaggerEndpoint("doc/swagger.json", "Auth Lextatico Api 
 
 if (!app.Environment.IsProduction())
 {
+    await app.Services.MigrateContextDbAsync();
+
     app.UseDeveloperExceptionPage();
 }
 

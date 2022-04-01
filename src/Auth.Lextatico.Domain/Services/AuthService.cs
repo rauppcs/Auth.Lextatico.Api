@@ -51,11 +51,13 @@ namespace Auth.Lextatico.Domain.Services
                     _message.AddError(string.Empty, "Usuário não está liberado para fazer login.");
                 else
                 {
-                    var remainingAttempts =
-                        _signInManager.Options.Lockout.MaxFailedAccessAttempts - user.AccessFailedCount;
-
                     if (user != null)
+                    {
+                        var remainingAttempts =
+                            _signInManager.Options.Lockout.MaxFailedAccessAttempts - user.AccessFailedCount;
+
                         _message.AddWarning($"Tentativas restantes antes do bloqueio: {remainingAttempts}");
+                    }
 
                     _message.AddError(string.Empty, "Usuário ou senha incorreto.");
                 }

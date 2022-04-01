@@ -34,6 +34,15 @@
             "netCore": {
                 "appProject": "${workspaceFolder}/src/Auth.Lextatico.Api/Auth.Lextatico.Api.csproj"
             }
-        }
+        },
+        {
+            "name": "Docker .NET Core Attach (Preview)",
+            "type": "docker",
+            "request": "attach",
+            "platform": "netCore",
+            "sourceFileMap": {
+                "/src": "${workspaceFolder}"
+            }
+        },
     ]
 }

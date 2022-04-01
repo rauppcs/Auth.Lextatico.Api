@@ -21,12 +21,12 @@ namespace Auth.Lextatico.Infra.Data.Context
         public LextaticoContext CreateDbContext(string[] args)
         {
             var directory = Directory.GetParent(Directory.GetCurrentDirectory())
-                .GetDirectories("Lextatico.Api").FirstOrDefault().FullName;
+                .GetDirectories("Auth.Lextatico.Api").FirstOrDefault().FullName;
 
             var builder = new ConfigurationBuilder()
                 .SetBasePath(directory)
                 .AddJsonFile("appsettings.LocalDevelopment.json", optional: false, reloadOnChange: true)
-                .AddUserSecrets(Assembly.Load("Lextatico.Infra.Data"))
+                .AddUserSecrets(Assembly.Load("Auth.Lextatico.Infra.Data"))
                 .Build();
 
             var sqlStringBuilder = new SqlConnectionStringBuilder(builder.GetConnectionString(nameof(LextaticoContext)))
