@@ -16,6 +16,8 @@ namespace Auth.Lextatico.Application.ConsumersDefinition
 
         protected readonly string RoutingKey;
 
+        protected readonly string SubscriptionName;
+
         public BaseConsumerDefinition(string exchangeName,
             string routingKey,
             string endpointName,
@@ -25,28 +27,29 @@ namespace Auth.Lextatico.Application.ConsumersDefinition
             ExchangeName = exchangeName;
             ExchangeType = exchangeType;
             RoutingKey = routingKey;
-            EndpointName = endpointName;
+            EndpointName = SubscriptionName = endpointName;
             _bindQueue = bindQueue;
         }
 
         protected override void ConfigureConsumer(IReceiveEndpointConfigurator endpointConfigurator, IConsumerConfigurator<T> consumerConfigurator)
         {
             endpointConfigurator.ConfigureConsumeTopology = false;
-            if (!(endpointConfigurator is IRabbitMqReceiveEndpointConfigurator rmq))
-                return;
 
-            // ConfigureDeserializer(rmq);
-            ConfigureRetry(rmq);
-            if (_bindQueue) BindExchange(rmq);
-            ConfigureCircuitBreaker(rmq);
+            ConfigureRetry(endpointConfigurator);
+
+            ConfigureCircuitBreaker(endpointConfigurator);
+
+            if (endpointConfigurator is IRabbitMqReceiveEndpointConfigurator rmq)
+            {
+                if (_bindQueue) BindExchange(rmq);
+            }
+            else if (endpointConfigurator is IServiceBusReceiveEndpointConfigurator sb)
+            {
+                sb.Subscribe(ExchangeName, SubscriptionName);
+            }
         }
 
-        protected virtual void ConfigureDeserializer(IRabbitMqReceiveEndpointConfigurator rmq)
-        {
-            rmq.UseJsonDeserializer(true);
-        }
-
-        protected virtual void ConfigureRetry(IRabbitMqReceiveEndpointConfigurator rmq)
+        protected virtual void ConfigureRetry(IReceiveEndpointConfigurator rmq)
         {
             rmq.UseRetry(retry => { retry.Incremental(3, TimeSpan.FromSeconds(5), TimeSpan.FromMinutes(1)); });
         }
@@ -61,7 +64,7 @@ namespace Auth.Lextatico.Application.ConsumersDefinition
             });
         }
 
-        protected virtual void ConfigureCircuitBreaker(IRabbitMqReceiveEndpointConfigurator rmq)
+        protected virtual void ConfigureCircuitBreaker(IReceiveEndpointConfigurator rmq)
         {
             rmq.UseCircuitBreaker(cb =>
             {

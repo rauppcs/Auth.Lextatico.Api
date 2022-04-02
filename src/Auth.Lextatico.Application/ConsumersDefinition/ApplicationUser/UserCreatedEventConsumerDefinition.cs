@@ -5,7 +5,7 @@ namespace Auth.Lextatico.Application.ConsumersDefinition.ApplicationUser
     public class UserCreatedEventConsumerDefinition : BaseConsumerDefinition<UserCreatedEventConsumer>
     {
         public UserCreatedEventConsumerDefinition()
-            : base("lextatico.exchange:UserCreatedEvent", "lextatico.UserCreated", "auth.lextatico.queue.UserCreatedEvent")
+            : base("lextatico.exchange.UserCreatedEvent", "lextatico.UserCreated", "auth.lextatico.queue.UserCreatedEvent")
         {
         }
     }

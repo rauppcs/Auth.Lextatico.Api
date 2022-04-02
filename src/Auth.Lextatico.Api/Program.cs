@@ -39,8 +39,12 @@ builder.Services
     .AddLexitaticoCors()
     .AddLextaticoControllers()
     .AddLextaticoSwagger()
-    .AddLextaticoMassTransitWithRabbitMq(builder.Configuration)
     .AddEndpointsApiExplorer();
+
+if (!builder.Environment.IsProduction())
+    builder.Services.AddLextaticoMassTransitWithRabbitMq(builder.Configuration);
+else
+    builder.Services.AddLextaticoMassTransitWithServiceBus(builder.Configuration);
 
 var app = builder.Build();
 
