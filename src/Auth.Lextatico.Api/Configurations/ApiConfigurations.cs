@@ -61,7 +61,8 @@ namespace Auth.Lextatico.Api.Configurations
                          Contact = new OpenApiContact
                          {
                              Name = "Cassiano dos Santos Raupp",
-                             Url = new Uri("https://www.linkedin.com/in/cassiano-raupp-50a6a9133/")
+                             Email = "cassiano.raupp@outlook.com",
+                             Url = new Uri("https://cassiano3795.github.io/cassianoraupp/")
                          }
                      });
 
