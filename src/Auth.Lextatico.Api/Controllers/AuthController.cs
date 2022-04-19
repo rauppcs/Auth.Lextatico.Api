@@ -46,8 +46,6 @@ namespace Auth.Lextatico.Api.Controllers
         [HttpGet, Route("[action]")]
         public IActionResult ValidateToken()
         {
-            _logger.LogInformation("User validated.");
-
             return ReturnOk();
         }
     }
