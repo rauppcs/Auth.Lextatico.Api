@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Auth.Lextatico.Infra.CrossCutting.Extensions
 {
-    public static class EntityFramework
+    public static class EntityFrameworkExtensions
     {
         public static async Task<IServiceProvider> MigrateContextDbAsync(this IServiceProvider serviceProvider)
         {

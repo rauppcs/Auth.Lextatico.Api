@@ -2,7 +2,7 @@ using System.Net;
 
 namespace Auth.Lextatico.Infra.CrossCutting.Extensions
 {
-    public static class HttpStatusCodeExtension
+    public static class HttpStatusCodeExtensions
     {
         public static bool IsSuccess(this HttpStatusCode httpStatusCode)
         {
