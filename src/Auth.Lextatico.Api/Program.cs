@@ -25,8 +25,6 @@ builder.WebHost.ConfigureAppConfiguration((hostContext, builder) =>
 
 builder.Host.UseLextaticoSerilog(builder.Environment, builder.Configuration);
 
-
-
 builder.Services
     .AddHttpContextAccessor()
     .AddLextaticoMessage()

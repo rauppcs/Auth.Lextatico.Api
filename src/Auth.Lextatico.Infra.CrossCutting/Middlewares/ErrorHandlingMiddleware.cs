@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Mime;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Auth.Lextatico.Application.Dtos.Response;
@@ -71,7 +72,7 @@ namespace Auth.Lextatico.Infra.CrossCutting.Middlewares
 
             var result = JsonSerializer.Serialize(response);
 
-            context.Response.ContentType = "application/json";
+            context.Response.ContentType = MediaTypeNames.Application.Json;
 
             context.Response.StatusCode = (int)code;
 
