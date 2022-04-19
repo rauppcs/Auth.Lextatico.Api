@@ -37,7 +37,7 @@ builder.Services
     .AddLextaticoDomainServices()
     .AddLextaticoAutoMapper()
     .AddLextaticoApplicationServices()
-    .AddLextaticoHealthChecks(builder.Configuration)
+    .AddLextaticoHealthChecks(builder.Configuration, builder.Environment)
     .AddLextaticoContext(builder.Configuration, builder.Environment)
     .AddLextaticoIdentity()
     .AddLextaticoJwt(builder.Configuration)

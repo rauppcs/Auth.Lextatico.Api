@@ -18,7 +18,7 @@ namespace Auth.Lextatico.Infra.CrossCutting.IoC
 
                 if (!hostEnvironment.IsProduction())
                 {
-                    var sqlStringBuilder = new SqlConnectionStringBuilder(configuration.GetConnectionString(nameof(LextaticoContext)));
+                    var sqlStringBuilder = new SqlConnectionStringBuilder(connectionString);
 
                     sqlStringBuilder.Password = configuration["DbPassword"];
 
