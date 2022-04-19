@@ -63,13 +63,13 @@ namespace Auth.Lextatico.Domain.Services
 
         public ITokenService WithJwtClaims()
         {
-            _jwtClaims.Add(new Claim(JwtRegisteredClaimNames.Sub, _applicationUser.Id.ToString()));
-            _jwtClaims.Add(new Claim(JwtRegisteredClaimNames.Email, _applicationUser.Email));
-            _jwtClaims.Add(new Claim(JwtRegisteredClaimNames.NameId, _applicationUser.Id.ToString()));
+            _jwtClaims.Add(new Claim("sub", _applicationUser.Id.ToString()));
+            _jwtClaims.Add(new Claim("email", _applicationUser.Email));
+            _jwtClaims.Add(new Claim("name", _applicationUser.Name));
             _jwtClaims.Add(new Claim("username", _applicationUser.UserName));
-            _jwtClaims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
-            _jwtClaims.Add(new Claim(JwtRegisteredClaimNames.Nbf, ToUnixEpochDate(DateTime.UtcNow).ToString()));
-            _jwtClaims.Add(new Claim(JwtRegisteredClaimNames.Iat, ToUnixEpochDate(DateTime.UtcNow).ToString(), ClaimValueTypes.Integer64));
+            _jwtClaims.Add(new Claim("jti", Guid.NewGuid().ToString()));
+            _jwtClaims.Add(new Claim("nbf", ToUnixEpochDate(DateTime.UtcNow).ToString()));
+            _jwtClaims.Add(new Claim("iat", ToUnixEpochDate(DateTime.UtcNow).ToString(), ClaimValueTypes.Integer64));
 
             _identityClaims.AddClaims(_jwtClaims);
 

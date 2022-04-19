@@ -2,7 +2,7 @@ using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
-namespace Lextatico.Infra.Identity.User
+namespace Auth.Lextatico.Infra.Identity.User
 {
     public static class ClaimsPrincipalExtensions
     {
@@ -25,6 +25,17 @@ namespace Lextatico.Infra.Identity.User
             }
 
             var claim = principal.FindFirst(ClaimTypes.Email);
+            return claim?.Value;
+        }
+
+        public static string GetUserName(this ClaimsPrincipal principal)
+        {
+            if (principal == null)
+            {
+                throw new ArgumentNullException(nameof(principal));
+            }
+
+            var claim = principal.FindFirst("name");
             return claim?.Value;
         }
     }

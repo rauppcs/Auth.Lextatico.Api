@@ -1,4 +1,6 @@
-namespace Auth.Lextatico.Api.Extensions
+using Microsoft.Extensions.Hosting;
+
+namespace Auth.Lextatico.Infra.CrossCutting.Extensions
 {
     public static class HostEnvironmentEnvExtensions
     {

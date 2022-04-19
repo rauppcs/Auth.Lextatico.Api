@@ -2,6 +2,7 @@ using Auth.Lextatico.Api.Controllers.Base;
 using Auth.Lextatico.Application.Dtos.User;
 using Auth.Lextatico.Application.Services.Interfaces;
 using Auth.Lextatico.Domain.Dtos.Message;
+using Auth.Lextatico.Domain.Exceptions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,7 +25,11 @@ namespace Auth.Lextatico.Api.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] UserLogInDto userLogin)
         {
+            _logger.LogInformation("Start login, user \"{userEmail}\".", userLogin.Email);
+
             var result = await _authAppService.LogInAsync(userLogin);
+
+            _logger.LogInformation("Finish login, user \"{userEmail}\".", userLogin.Email);
 
             return ReturnOk(result);
         }
@@ -41,6 +46,8 @@ namespace Auth.Lextatico.Api.Controllers
         [HttpGet, Route("[action]")]
         public IActionResult ValidateToken()
         {
+            _logger.LogInformation("User validated.");
+
             return ReturnOk();
         }
     }

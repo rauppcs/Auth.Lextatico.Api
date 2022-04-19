@@ -1,7 +1,6 @@
 using System.Net.Mime;
 using Auth.Lextatico.Infra.CrossCutting.Extensions.MassTransitExtensions;
 using Auth.Lextatico.Api.Configurations;
-using Auth.Lextatico.Api.Extensions;
 using Auth.Lextatico.Infra.CrossCutting.Extensions;
 using Auth.Lextatico.Infra.CrossCutting.IoC;
 using Auth.Lextatico.Infra.Identity.User;
@@ -9,7 +8,9 @@ using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Newtonsoft.Json;
-using HostEnvironmentEnvExtensions = Auth.Lextatico.Api.Extensions.HostEnvironmentEnvExtensions;
+using HostEnvironmentEnvExtensions = Auth.Lextatico.Infra.CrossCutting.Extensions.HostEnvironmentEnvExtensions;
+using Serilog;
+using Auth.Lextatico.Infra.CrossCutting.Middlewares;
 
 if (HostEnvironmentEnvExtensions.IsDocker())
     Thread.Sleep(30000);
@@ -22,6 +23,10 @@ builder.WebHost.ConfigureAppConfiguration((hostContext, builder) =>
         builder.AddUserSecrets<Program>();
 });
 
+builder.Host.UseLextaticoSerilog(builder.Environment, builder.Configuration);
+
+
+
 builder.Services
     .AddHttpContextAccessor()
     .AddLextaticoMessage()
@@ -33,7 +38,7 @@ builder.Services
     .AddLextaticoAutoMapper()
     .AddLextaticoApplicationServices()
     .AddLextaticoHealthChecks(builder.Configuration)
-    .AddLextaticoContext(builder.Configuration)
+    .AddLextaticoContext(builder.Configuration, builder.Environment)
     .AddLextaticoIdentity()
     .AddLextaticoJwt(builder.Configuration)
     .AddLexitaticoCors()
@@ -73,6 +78,10 @@ app.UseCors();
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+app.UseRequestSerilog();
+
+app.UseErrorHandling();
 
 app.UseTransaction();
 

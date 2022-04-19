@@ -17,8 +17,9 @@ namespace Auth.Lextatico.Infra.CrossCutting.IoC
             var connectionString = sqlStringBuilder.ToString();
 
             services.AddHealthChecks()
-                .AddCheck<SelfCheck>("API")
-                .AddSqlServer(connectionString, name: "SqlServer");
+                .AddCheck<SelfCheck>("api")
+                .AddMongoDb(configuration.GetConnectionString("LextaticoMongoDbLogs"), name: "mongodb")
+                .AddSqlServer(connectionString, name: "sqlserver");
 
             return services;
         }

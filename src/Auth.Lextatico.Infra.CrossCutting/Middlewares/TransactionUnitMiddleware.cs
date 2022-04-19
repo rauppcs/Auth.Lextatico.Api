@@ -1,10 +1,11 @@
 using System.Net;
+using Auth.Lextatico.Infra.CrossCutting.Extensions;
 using Auth.Lextatico.Infra.Data.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
-namespace Auth.Lextatico.Infra.CrossCutting.Extensions
+namespace Auth.Lextatico.Infra.CrossCutting.Middlewares
 {
     public static class TransactionUnitExtension
     {
@@ -62,10 +63,12 @@ namespace Auth.Lextatico.Infra.CrossCutting.Extensions
                     await _next(httpContext);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 await lextaticoContext.UndoTransaction();
                 await lextaticoContext.DiscardCurrentTransactionAsync();
+
+                throw ex;
             }
         }
     }
