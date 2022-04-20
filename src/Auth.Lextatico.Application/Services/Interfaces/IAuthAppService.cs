@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Auth.Lextatico.Application.Dtos.User;
 
 namespace Auth.Lextatico.Application.Services.Interfaces

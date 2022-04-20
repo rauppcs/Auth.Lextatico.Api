@@ -1,4 +1,3 @@
-using System;
 using Auth.Lextatico.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

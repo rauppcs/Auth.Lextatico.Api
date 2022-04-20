@@ -1,7 +1,5 @@
 #nullable enable
 
-using System.Collections.Generic;
-using System.Linq;
 using Auth.Lextatico.Domain.Dtos.Message;
 
 namespace Auth.Lextatico.Application.Dtos.Response

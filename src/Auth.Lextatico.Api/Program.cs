@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Newtonsoft.Json;
 using HostEnvironmentEnvExtensions = Auth.Lextatico.Infra.CrossCutting.Extensions.HostEnvironmentEnvExtensions;
-using Serilog;
 using Auth.Lextatico.Infra.CrossCutting.Middlewares;
 
 if (HostEnvironmentEnvExtensions.IsDocker())
@@ -80,6 +79,8 @@ app.UseAuthorization();
 app.UseRequestSerilog();
 
 app.UseErrorHandling();
+
+app.UseLogging();
 
 app.UseTransaction();
 

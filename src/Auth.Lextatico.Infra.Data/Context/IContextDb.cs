@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Auth.Lextatico.Infra.Data.Context

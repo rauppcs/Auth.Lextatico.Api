@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Auth.Lextatico.Infra.CrossCutting.Middlewares
 {
-    public static class TransactionUnitExtension
+    public static class TransactionUnitExtensions
     {
         public static IApplicationBuilder UseTransaction(this IApplicationBuilder app)
         {

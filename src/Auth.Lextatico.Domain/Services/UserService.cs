@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
 using Auth.Lextatico.Domain.Configurations;
 using Auth.Lextatico.Domain.Dtos.Message;
 using Auth.Lextatico.Domain.Interfaces.Services;

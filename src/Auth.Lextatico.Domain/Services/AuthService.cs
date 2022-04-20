@@ -1,15 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Auth.Lextatico.Domain.Configurations;
 using Auth.Lextatico.Domain.Dtos.Message;
 using Auth.Lextatico.Domain.Interfaces.Services;
 using Auth.Lextatico.Domain.Models;
-using Auth.Lextatico.Infra.Identity.User;
-using Auth.Lextatico.Infra.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Options;
 
 namespace Auth.Lextatico.Domain.Services
 {

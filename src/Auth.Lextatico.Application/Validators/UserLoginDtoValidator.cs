@@ -1,5 +1,3 @@
-using System.Linq;
-using FluentValidation;
 using Auth.Lextatico.Application.Dtos.User;
 using Auth.Lextatico.Domain.Models;
 using Microsoft.AspNetCore.Identity;

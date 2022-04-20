@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Serilog.Context;
 using Auth.Lextatico.Infra.Identity.User;
@@ -9,7 +5,7 @@ using Microsoft.AspNetCore.Builder;
 
 namespace Auth.Lextatico.Infra.CrossCutting.Middlewares
 {
-    public static class RequestSerilogExtension
+    public static class RequestSerilogExtensions
     {
         public static IApplicationBuilder UseRequestSerilog(this IApplicationBuilder app)
         {

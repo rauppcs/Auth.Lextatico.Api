@@ -1,4 +1,3 @@
-using System.Data;
 using FluentValidation;
 using Auth.Lextatico.Application.Dtos.User;
 

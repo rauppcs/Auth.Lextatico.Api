@@ -1,5 +1,3 @@
-using System;
-
 namespace Auth.Lextatico.Application.Dtos.User
 {
     public class AuthenticatedUserDto

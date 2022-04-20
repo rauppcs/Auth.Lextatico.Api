@@ -1,5 +1,3 @@
-using System;
-
 namespace Auth.Lextatico.Domain.Models
 {
     public class RefreshToken : Base

@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Auth.Lextatico.Domain.Events;
 using MassTransit;
 using Microsoft.AspNetCore.Identity;

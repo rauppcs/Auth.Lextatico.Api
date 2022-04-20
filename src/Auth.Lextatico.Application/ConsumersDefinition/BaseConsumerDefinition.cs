@@ -1,6 +1,4 @@
 using MassTransit;
-using MassTransit.Serialization;
-using MimeKit;
 using ExcgType = RabbitMQ.Client.ExchangeType;
 
 namespace Auth.Lextatico.Application.ConsumersDefinition

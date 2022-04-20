@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Auth.Lextatico.Infra.Services.Models.EmailService;
 
 namespace Auth.Lextatico.Infra.Services.Interfaces

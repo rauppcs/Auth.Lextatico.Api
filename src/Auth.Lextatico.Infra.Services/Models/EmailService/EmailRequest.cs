@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace Auth.Lextatico.Infra.Services.Models.EmailService
 {
     public class EmailRequest

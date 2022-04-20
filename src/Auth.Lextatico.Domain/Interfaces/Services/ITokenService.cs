@@ -1,5 +1,3 @@
-using System;
-using System.Security.Claims;
 using Auth.Lextatico.Domain.Models;
 using Auth.Lextatico.Domain.Security;
 using Microsoft.AspNetCore.Identity;

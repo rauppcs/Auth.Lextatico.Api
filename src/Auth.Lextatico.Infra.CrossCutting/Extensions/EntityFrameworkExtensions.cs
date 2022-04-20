@@ -1,5 +1,3 @@
-using System;
-using System.Threading.Tasks;
 using Auth.Lextatico.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;

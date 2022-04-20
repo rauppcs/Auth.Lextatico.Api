@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Mime;
 using System.Text.Json;
-using System.Threading.Tasks;
 using Auth.Lextatico.Application.Dtos.Response;
 using Auth.Lextatico.Domain.Exceptions;
 using Microsoft.AspNetCore.Builder;
@@ -13,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Auth.Lextatico.Infra.CrossCutting.Middlewares
 {
-    public static class ErrorHandlingExtension
+    public static class ErrorHandlingExtensions
     {
         public static IApplicationBuilder UseErrorHandling(this IApplicationBuilder app)
         {
@@ -28,18 +24,18 @@ namespace Auth.Lextatico.Infra.CrossCutting.Middlewares
 
     public class ErrorHandlingMiddleware
     {
-        private readonly RequestDelegate next;
+        private readonly RequestDelegate _next;
 
         public ErrorHandlingMiddleware(RequestDelegate next)
         {
-            this.next = next;
+            _next = next;
         }
 
         public async Task Invoke(HttpContext context, ILogger<ErrorHandlingMiddleware> logger)
         {
             try
             {
-                await next(context);
+                await _next(context);
             }
             catch (Exception ex)
             {
