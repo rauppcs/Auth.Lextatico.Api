@@ -14,7 +14,7 @@ namespace Auth.Lextatico.Application.Dtos.Response
             Data = data;
         }
 
-        public object? Data { get; private set; }
+        public object? Data { get; internal set; }
 
         public List<Notification> Errors { get; } = new List<Notification>();
 

@@ -4,8 +4,8 @@ using System.Text.Json;
 using Auth.Lextatico.Application.Dtos.Response;
 using Auth.Lextatico.Domain.Exceptions;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
 
 namespace Auth.Lextatico.Infra.CrossCutting.Middlewares
 {
@@ -13,66 +13,35 @@ namespace Auth.Lextatico.Infra.CrossCutting.Middlewares
     {
         public static IApplicationBuilder UseErrorHandling(this IApplicationBuilder app)
         {
-            if (app is null)
-                throw new ArgumentNullException(nameof(app));
+            app.UseExceptionHandler(exceptionHandlerApp =>
+                {
+                    exceptionHandlerApp.Run(async context =>
+                    {
+                        var response = new Response();
+                        var exception = context.Features.Get<IExceptionHandlerPathFeature>()?.Error;
 
-            app.UseMiddleware<ErrorHandlingMiddleware>();
+                        var code = HttpStatusCode.InternalServerError;
+
+                        if (exception is NotFoundException)
+                        {
+                            code = HttpStatusCode.NotFound;
+
+                            response.AddError(exception.Message);
+                        }
+                        // else if (exception is MyUnauthorizedException) code = HttpStatusCode.Unauthorized;
+                        // else if (exception is MyException)             code = HttpStatusCode.BadRequest;
+                        else
+                            response.AddError("Ocorreu um erro inesperado.");
+
+                        context.Response.ContentType = MediaTypeNames.Application.Json;
+
+                        context.Response.StatusCode = (int)code;
+
+                        await context.Response.WriteAsJsonAsync(response);
+                    });
+                });
 
             return app;
-        }
-    }
-
-    public class ErrorHandlingMiddleware
-    {
-        private readonly RequestDelegate _next;
-
-        public ErrorHandlingMiddleware(RequestDelegate next)
-        {
-            _next = next;
-        }
-
-        public async Task Invoke(HttpContext context, ILogger<ErrorHandlingMiddleware> logger)
-        {
-            try
-            {
-                await _next(context);
-            }
-            catch (Exception ex)
-            {
-                await HandleExceptionAsync(context, ex, logger);
-            }
-        }
-
-        private static Task HandleExceptionAsync(HttpContext context, Exception exception, ILogger<ErrorHandlingMiddleware> logger)
-        {
-            var response = new Response();
-
-            logger.LogError(exception, "Erro na aplicação");
-
-            var code = HttpStatusCode.InternalServerError;
-
-            if (exception is NotFoundException)
-            {
-                code = HttpStatusCode.NotFound;
-
-                response.AddError(exception.Message);
-            }
-            // else if (exception is MyUnauthorizedException) code = HttpStatusCode.Unauthorized;
-            // else if (exception is MyException)             code = HttpStatusCode.BadRequest;
-            else
-            {
-                code = HttpStatusCode.InternalServerError;
-
-                response.AddError("Ocorreu um erro inesperado.");
-            }
-
-            var result = JsonSerializer.Serialize(response);
-
-            context.Response.ContentType = MediaTypeNames.Application.Json;
-
-            context.Response.StatusCode = (int)code;
-
-            return context.Response.WriteAsJsonAsync(response);
         }
     }
 }
