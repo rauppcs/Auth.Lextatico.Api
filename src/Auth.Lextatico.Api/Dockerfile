@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/aspnet:6.0-focal AS base
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
 EXPOSE 9000
 EXPOSE 9001
@@ -10,7 +10,7 @@ ENV ASPNETCORE_URLS=http://+:9000;https://+:9001
 # RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /app
 # USER appuser
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0-focal AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 COPY ["src/Auth.Lextatico.Api/Auth.Lextatico.Api.csproj", "src/Auth.Lextatico.Api/"]
 RUN dotnet restore "src/Auth.Lextatico.Api/Auth.Lextatico.Api.csproj"
