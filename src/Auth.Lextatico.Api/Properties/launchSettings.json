@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "LocalDevelopment"
       }
     },
-    "Auth.Lextatico.Api - LocalDevelopment": {
+    "LocalDevelopment": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
