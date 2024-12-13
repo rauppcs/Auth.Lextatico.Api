@@ -10,6 +10,7 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using HostEnvironmentEnvExtensions = Auth.Lextatico.Infra.CrossCutting.Extensions.HostEnvironmentEnvExtensions;
 using Auth.Lextatico.Infra.CrossCutting.Middlewares;
 using System.Text.Json;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -61,6 +62,8 @@ if (app.Environment.IsProduction())
 
     app.UseHsts();
 }
+
+app.UseSerilogRequestLogging();
 
 app.UseRouting();
 
