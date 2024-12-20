@@ -10,6 +10,7 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using HostEnvironmentEnvExtensions = Auth.Lextatico.Infra.CrossCutting.Extensions.HostEnvironmentEnvExtensions;
 using Auth.Lextatico.Infra.CrossCutting.Middlewares;
 using System.Text.Json;
+using Asp.Versioning.ApiExplorer;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,6 +36,7 @@ builder.Services
     .AddLextaticoJwt(builder.Configuration)
     .AddLexitaticoCors()
     .AddLextaticoControllers()
+    .AddLextaticoApiVersioning()
     .AddLextaticoSwagger()
     .AddEndpointsApiExplorer();
 
@@ -45,9 +47,7 @@ else
 
 var app = builder.Build();
 
-app.UseSwagger();
-
-app.UseSwaggerUI(c => c.SwaggerEndpoint("doc/swagger.json", "Auth Lextatico Api v1"));
+app.UseLextaticoSwagger();
 
 if (!app.Environment.IsProduction())
 {

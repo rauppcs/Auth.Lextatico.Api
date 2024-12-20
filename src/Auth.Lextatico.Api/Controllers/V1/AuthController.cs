@@ -1,12 +1,13 @@
-using Auth.Lextatico.Api.Controllers.Base;
+using Asp.Versioning;
 using Auth.Lextatico.Application.Dtos.User;
 using Auth.Lextatico.Application.Services.Interfaces;
 using Auth.Lextatico.Domain.Dtos.Message;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Auth.Lextatico.Api.Controllers
+namespace Auth.Lextatico.Api.Controllers.V1
 {
+    [ApiVersion("1.0")]
     public class AuthController : LextaticoController
     {
         private readonly IAuthAppService _authAppService;
@@ -19,7 +20,7 @@ namespace Auth.Lextatico.Api.Controllers
             _logger = logger;
             _authAppService = authAppService;
         }
-
+        
         [HttpPost, Route("[action]")]
         [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] UserLogInDto userLogin)

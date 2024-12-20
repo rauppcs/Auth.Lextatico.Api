@@ -15,18 +15,3 @@ services:
       - LOCAL_DEVELOPMENT=True
     volumes:
       - ~/.vsdbg:/remote_debugger:rw
-  
-  seq:
-    image: datalust/seq:latest
-    container_name: seq
-    depends_on:
-      - authlextaticoapi
-    environment:
-      - ACCEPT_EULA=Y
-    ports:
-      - 5341:5341
-      - 8081:80
-    networks:
-      - Lextatico
-    cap_drop:
-      - NET_RAW
