@@ -16,7 +16,15 @@ namespace Auth.Lextatico.Application.Consumers.ApplicationUser
 
         public async Task Consume(ConsumeContext<UserCreatedEvent> context)
         {
-            await _userManager.CreateAsync(context.Message.ApplicationUser);
+            var user = new User
+            {
+                Name = context.Message.ApplicationUser.Name,
+                UserName = context.Message.ApplicationUser.UserName,
+                Email = context.Message.ApplicationUser.Email,
+                PasswordHash = context.Message.ApplicationUser.PasswordHash
+            };
+
+            await _userManager.CreateAsync(user);
         }
     }
 }
